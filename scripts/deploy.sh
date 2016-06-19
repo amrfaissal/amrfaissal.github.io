@@ -1,16 +1,18 @@
 #!/bin/bash
 set -e
 
+echo "Deploying the site..."
+
 # Deploy built docs to this branch
 TARGET_BRANCH=master
- 
+
 if [ ! -d "$SOURCE_DIR" ]; then
   echo "SOURCE_DIR ($SOURCE_DIR) does not exist, build the source directory before deploying"
   exit 1
 fi
- 
+
 REPO=$(git config remote.origin.url)
- 
+
 if [ -n "$TRAVIS_BUILD_ID" ]; then
   # When running on Travis we need to use SSH to deploy to GitHub
   #
@@ -42,7 +44,7 @@ if [ -n "$TRAVIS_BUILD_ID" ]; then
       # is using today (it changed!)
       REPO=${REPO/git:\/\/github.com\//git@github.com:}
       REPO=${REPO/https:\/\/github.com\//git@github.com:}
-      
+
       chmod 600 $SSH_KEY
       eval `ssh-agent -s`
       ssh-add $SSH_KEY
@@ -51,7 +53,7 @@ if [ -n "$TRAVIS_BUILD_ID" ]; then
     fi
   fi
 fi
- 
+
 REPO_NAME=$(basename $REPO)
 TARGET_DIR=$(mktemp -d /tmp/$REPO_NAME.XXXX)
 REV=$(git rev-parse HEAD)
