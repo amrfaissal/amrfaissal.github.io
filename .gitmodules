@@ -1,0 +1,3 @@
+[submodule "hugo-uno"]
+ path = themes/hugo-uno
+ url = https://github.com/amrfaissal/hugo-uno
