@@ -1,0 +1,24 @@
+languageCode = "en-us"
+title = "FAISSAL ELAMRAOUI"
+baseurl = "https://amrfaissal.github.io"
+theme = "hugo-uno"
+author = "Faissal Elamraoui"
+copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
+
+contentdir = "content"
+layourtdir = "layouts"
+publishdir = "public"
+canonifyurls = true
+
+[indexes]
+   category = "categories"
+   tag = "tags"
+[Params]
+  AuthorName = "Faissal"
+  github = "amrfaissal"
+  twitter = "amrfaissal"
+  email = "amr.faissal@gmail.com"
+  description = "Software Craftsman. Passionate about new technologies and Programming languages."
+  linkedin = "amrfaissal"
+  cover = "/images/liftoff.jpg"
+  logo = "/images/logo.jpeg"
