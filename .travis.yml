@@ -1,0 +1,29 @@
+language: go
+
+go:
+- 1.5.1
+
+env:
+  global:
+  - GIT_DEPLOY_USERNAME="Faissal Elamraoui"
+  - GIT_DEPLOY_EMAIL="amr.faissal@gmail.com"
+  - GIT_DEPLOY_DIR="public"
+  - GIT_DEPLOY_BRANCH="master"
+  - secure: pTtF37TjhhagLJfPaf1KlvPzYtoGV6quCRY5lTK1ddU1Q9mCIfcwUmohtwjUOeS7UrujT+e2bt/9n5CiLOb0Fp0aO9rwmv5sUX/djNcad+0CjohdMoM+U/fLyn4JaMPq+0bfH5JtuRpae6EVvzeUpDHGZfenl1i8QLDNR3d7OGIK4zZ/R/jPqeQ7+T87egXk/PNBTHV5IEFqhc1YyjbuKo9dr1nht/XuE+dzyeQGmMbrMFJ92RqgZ6conZEAaiBbuv5L6cKgmCUu1pk2XqIqp1i2P8zzS2yvBDy4N6qJlbl66QrQFFpVZL4sMqJAT77Yo2a/DFV5vu0K7ytdWcO9EDTo6qltzfZbEJaAFH1NaIiL8d2aClnLZ4BDLtvEy9oBOu+XOX2DH4fdgh1mfay4MsMZAGZ2VxA8UGZn2q9T3mKxM9/fNYwrGo++5jtN646QiVErxDJv7hKVQxM669Dtcc19Iedeq5lGzqxv7lV00wAT320XMwc6QHVr5iR6S5L9OpPAif7gfWQNVEY2YoIHF4kqvCHvgnH9ed1ehwbRkD7/LpVTTP+vGQKdJLuo8RrZcqlRAGtyxFotW4EBuNT0W6zqqB4YfqO9YnUFukiJ/yHFOfxR6jIiXTzw4xOPEktXQilYBeSmff5qovfBp/gV5ouSqH8CUHIL0klSQbRIkbM=
+
+branches:
+  only:
+  - source
+
+install:
+  - rm -rf public || exit 0
+
+before_script:
+  - go get -u -v github.com/spf13/hugo
+
+script:
+  - hugo
+
+after_success:
+- cp .travis.yml public
+- bash deploy.sh
